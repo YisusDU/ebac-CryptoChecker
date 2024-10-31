@@ -1,0 +1,105 @@
+.header div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  gap: 2%;
+  width: -moz-fit-content;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.header img {
+  width: 8%;
+  min-width: 150px;
+  min-height: 120px;
+}
+.header h1 {
+  font-size: clamp(40px, 5vw, 50px);
+  margin: 0;
+}
+.header i {
+  scale: 1.2;
+  display: flex;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  width: aut5vw;
+  box-sizing: border-box;
+  margin: 20px;
+}
+.header i svg {
+  max-width: 100px;
+}
+
+.main .description a {
+  color: #fff;
+  text-decoration: underline;
+}
+.main .content .buy {
+  grid-column: 1/2;
+  background-color: rgba(0, 255, 0, 0.3490196078);
+  height: 200px;
+  border-radius: 10px;
+  margin: 2%;
+}
+.main .content .hold {
+  grid-column: 2/3;
+  background-color: rgba(255, 255, 0, 0.6);
+  height: 200px;
+  border-radius: 10px;
+  margin: 2%;
+}
+.main .content .sell {
+  grid-column: 3;
+  background-color: rgba(255, 0, 0, 0.4392156863);
+  height: 200px;
+  border-radius: 10px;
+  margin: 2%;
+}
+
+* {
+  font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
+}
+* p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  background-color: #0b1b30;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #00e7ff;
+  color: #fff;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  padding: 1% 5%;
+  box-sizing: border-box;
+}
+.main .description {
+  grid-column: 1/4;
+  grid-row: 1;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  color: #fff;
+}
+.main .content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,68 @@
+.header{
+    div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        gap: 2%;
+        width: fit-content;
+        box-sizing: border-box;
+    }
+    img{
+        width: 8%;
+        min-width: 150px;
+        min-height: 120px;
+    }
+    h1{
+        font-size: clamp(40px,  5vw, 50px);
+
+        margin: 0;
+    }
+    i{
+        scale: 1.2;
+        display: flex;
+        padding: 10px;
+        border: 1px  solid #fff;
+        border-radius: 10px;
+        width: aut5vw;
+        box-sizing: border-box;
+        margin: 20px;
+        svg{
+            max-width: 100px;;
+        }
+    }
+}
+
+.main{
+    .description{
+        a{
+            color: #fff;
+            text-decoration: underline;
+        }
+    }
+    
+    .content{
+        .buy{
+            grid-column: 1/2;
+            background-color: #00ff0059;
+            height: 200px;
+            border-radius: 10px;
+            margin: 2%;
+        }
+        .hold{
+            grid-column: 2/3;
+            background-color: #ffff0099;
+            height: 200px;
+            border-radius: 10px;
+            margin: 2%;
+        }
+        .sell{
+            grid-column: 3;
+            background-color: #ff000070;
+            height: 200px;
+            border-radius: 10px;
+            margin: 2%;
+        }
+    }
+   
+}
