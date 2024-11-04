@@ -16,6 +16,7 @@ const creatPokemonCard = (pokemon) => {
 
     const imageContainer = document.createElement('div');
     imageContainer.classList.add('image__container');
+
     const image = document.createElement("img");
     image.classList.add("pokemon__image");
     image.src = pokemon.sprites.front_default;

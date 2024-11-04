@@ -86,6 +86,10 @@ La verda vienen muchos datos,  pero los que me interesan son los siguientes
 "id": "bitcoin",
 "symbol": "btc",
 "name": "Bitcoin",
+precio actual--------- https://api.coingecko.com/api/v3/coins/bitcoin?accept=application/json&x-cg-demo-api-key=CG-HRpokdbgoPqyfytYatDB2f2f
+buscar en el json :
+current_price
+mxn---pesos mexicanos sin decimales
 
 "price_change_24h": -256.2593316244,
         "price_change_percentage_24h": -0.35356,
@@ -94,6 +98,10 @@ La verda vienen muchos datos,  pero los que me interesan son los siguientes
         "price_change_percentage_30d": 13.88976,
         "price_change_percentage_60d": 22.57371,
         "price_change_percentage_200d": 13.07546,
+
+max precio historico ---------verlo en la pagina  de coin gecko, en la parte de datos de la criptomoneda y añadirlo manualmente, 
+además, hacer una función que lo actualice automáticamente
+
 
 https://api.coingecko.com/api/v3/coins/bitcoin?accept=application/json&x-cg-demo-api-key=	CG-HRpokdbgoPqyfytYatDB2f2f
 
@@ -114,3 +122,28 @@ axios
   .catch(err => console.error(err));
 
 
+//---------------Criptos que planeo añadir
+bitcoin
+ethereum
+litecoin
+Chainlink
+Uniswap
+Solana
+
+
+//----------Usa este endopoint para adiquirir las imagenes de cada criptomoneda
+usa .image.small
+
+import axios from 'axios';
+
+const options = {
+  method: 'GET',
+  url: 'https://api.coingecko.com/api/v3/coins/id/history',
+  params: {x_cg_demo_api_key: 'CG-HRpokdbgoPqyfytYatDB2f2f'},
+  headers: {accept: 'application/json'}
+};
+
+axios
+  .request(options)
+  .then(res => console.log(res.data))
+  .catch(err => console.error(err));

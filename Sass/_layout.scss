@@ -1,25 +1,21 @@
 *{
-    font-family: "Spicy Rice",Arial, Helvetica, sans-serif;
+    h1, h2, h3{
+        font-family: "Spicy Rice",Arial, Helvetica, sans-serif;
+    }
     p{
         font-family: Arial, Helvetica, sans-serif;
     }
 }
 html{
-    background-color: $background__html--dark;
+    background-color: $backGroundHtmlLight;
 }
 body{
     margin: 0;
 }
 
 .header{
-    display: flex;
-    flex-direction: row;
     background-color: #00e7ff;
     color: #fff;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .main{
@@ -28,16 +24,20 @@ body{
     grid-template-rows: auto 1fr;
     padding: 1% 5%;
     box-sizing: border-box;
+    color:#000;
     .description{
         grid-column: 1/4;
         grid-row: 1;
         width: 100%;
         height: fit-content;
-        color: #fff;
     }
     .content{
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(3,1fr);
     }
+}
+
+.footer{
+    padding: 1%;
 }

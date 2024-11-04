@@ -12,41 +12,207 @@
 </head>
 <body>
     <header class="header">
-        <div>
-            <img id="loge__crytochecker" class="loge__crytochecker" src="Assets/img/loge--Cryptochecker.png" alt="loge__crytochecker">
-            <h1>CryptoChecker</h1>
-        </div>
-        <i><svg width="50" height="50" viewBox="0 0 1.5 1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.25.438A.063.063 0 0 1 .313.375h.875a.063.063 0 1 1 0 .125H.313A.063.063 0 0 1 .25.437m0 .313A.063.063 0 0 1 .313.687h.875a.063.063 0 1 1 0 .125H.313A.063.063 0 0 1 .25.749m0 .313A.063.063 0 0 1 .313.999h.875a.063.063 0 1 1 0 .125H.313a.063.063 0 0 1-.063-.063" fill="#0D0D0D"/></svg></i>
+        <article>
+            <div>
+                <img id="loge__crytochecker" class="loge__crytochecker" src="Assets/img/loge--Cryptochecker.png" alt="loge__crytochecker">
+                <h1>CryptoChecker</h1>
+            </div>
+            <i><svg width="50" height="50" viewBox="0 0 1.5 1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.25.438A.063.063 0 0 1 .313.375h.875a.063.063 0 1 1 0 .125H.313A.063.063 0 0 1 .25.437m0 .313A.063.063 0 0 1 .313.687h.875a.063.063 0 1 1 0 .125H.313A.063.063 0 0 1 .25.749m0 .313A.063.063 0 0 1 .313.999h.875a.063.063 0 1 1 0 .125H.313a.063.063 0 0 1-.063-.063" fill="#0D0D0D"/></svg></i>    
+        </article>
     </header>
 
     <main class="main">
         <article class="description">
-            <h2>By Jesús Díaz</h2>
-            <p>¡Bienvenidos, cazadores de cryptomonedas!
-                <br>
-                Aquí encontrarás información sobre las criptomonedas más populares, sus precios y tendencias.
-                <br>
+            
+            <h2>¡Bienvenidos, cazadores de cryptomonedas!</h2>
+            <p>
+                Aquí encontrarás información sobre las criptomonedas disponibles para Compra/Venta en <a href="https://www.mercadopago.com.mx/criptomonedas">Mercado Pago</a>, sus precios y tendencias.
                 Si buscas información más a fondo, te invito a que revises la página que hace esto posible <a href="https://www.coingecko.com">Coingecko&copy;</a>
+            </p>
+            <span>Nota*</span>
+            <p>
+                Considera que esta página se basa en el princípio de <span>¡COMPRA BARATO, VENDE CARO!</span>
             </p>
         </article>
 
         <article class="content">
             <section id="buy" class="buy">
-                <h3>Comprar</h3>
-                <div></div>
+                <div class="buy__header">
+                    <h3>Comprar</h3>
+                    <i><svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1.563 1.563" enable-background="new 0 0 50 50" xml:space="preserve" transform="rotate(90)"><path fill="#000" d="M0.486 1.276a0.031 0.031 0 0 0 0.044 0l0.469 -0.469a0.031 0.031 0 0 0 0 -0.044l-0.469 -0.469a0.031 0.031 0 1 0 -0.044 0.044l0.447 0.447 -0.447 0.447a0.031 0.031 0 0 0 0 0.044"/></svg></i>
+                </div>
+                <hr>
+                <div class="buy__container">
+                    <div class="products">
+
+                        <div class="product__parameter logo__name">
+                            <i id="coin__logo" class="logo">B</i>
+                            <span>Bitcoin (BTC)</span>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span>Price</span>
+                            <p id="current__price">72,000</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span >24hrs</span>
+                            <p id="24hrs">12%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span >7d</span>
+                            <p id="7d">7%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span  > 14d</span>
+                            <p id="14d">14%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span >30d</span>
+                            <p id="30d">30%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span >60d</span>
+                            <p id="60d">60%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span >200d</span>
+                            <p id="200d">200%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                           <span> Max price</span>
+                           <p id="max__price">100,000</p>
+                        </div>
+                        
+                    </div>
+                   
+                </div>
             </section>
 
             <section id="hold" class="hold">
-                <h3>Mantener</h3>
-                <div></div>
+                <div class="hold__header">
+                    <h3>Mantener</h3>
+                    <i><svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1.563 1.563" enable-background="new 0 0 50 50" xml:space="preserve" transform="rotate(90)"><path fill="#000" d="M0.486 1.276a0.031 0.031 0 0 0 0.044 0l0.469 -0.469a0.031 0.031 0 0 0 0 -0.044l-0.469 -0.469a0.031 0.031 0 1 0 -0.044 0.044l0.447 0.447 -0.447 0.447a0.031 0.031 0 0 0 0 0.044"/></svg></i>
+                </div>
+                
+                <hr>
+                <div class="buy__container">
+                    <div class="products">
+
+                        <div class="product__parameter">
+                            <span>Bitcoin (BTC)</span>
+                        </div>
+                        <div class="product__parameter">
+                            <span>Price</span>
+                            <p>72,000</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="24hrs">24hrs</span>
+                            <p>12%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="7d">7d</span>
+                            <p>7%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span  id="14d"> 14d</span>
+                            <p>14%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="30d">30d</span>
+                            <p>30%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="60d">60d</span>
+                            <p>60%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="200d">200d</span>
+                            <p>200%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                           <span> Max price</span>
+                           <p>100,000</p>
+                        </div>
+                        
+                    </div>
+                   
+                </div>
             </section>
 
             <section id="sell" class="sell">
-                <h3>Vender</h3>
-                <div></div>
+                <div class="sell__header">
+                    <h3>Vender</h3>
+                    <i><svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1.563 1.563" enable-background="new 0 0 50 50" xml:space="preserve" transform="rotate(90)"><path fill="#000" d="M0.486 1.276a0.031 0.031 0 0 0 0.044 0l0.469 -0.469a0.031 0.031 0 0 0 0 -0.044l-0.469 -0.469a0.031 0.031 0 1 0 -0.044 0.044l0.447 0.447 -0.447 0.447a0.031 0.031 0 0 0 0 0.044"/></svg></i>
+                </div>
+                <hr>
+                <div class="buy__container">
+                    <div class="products">
+
+                        <div class="product__parameter">
+                            <span>Bitcoin (BTC)</span>
+                        </div>
+                        <div class="product__parameter">
+                            <span>Price</span>
+                            <p>72,000</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="24hrs">24hrs</span>
+                            <p>12%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="7d">7d</span>
+                            <p>7%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span  id="14d"> 14d</span>
+                            <p>14%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="30d">30d</span>
+                            <p>30%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="60d">60d</span>
+                            <p>60%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                            <span id="200d">200d</span>
+                            <p>200%</p>
+                        </div>
+
+                        <div class="product__parameter">
+                           <span> Max price</span>
+                           <p>100,000</p>
+                        </div>
+                        
+                    </div>
+                </div>
             </section>
         </article>
     </main>
-    <footer></footer>
+    <footer class="footer">
+        <hr>
+        <h2>By Jesús Díaz</h2>
+    </footer>
 </body>
 </html>

@@ -1,3 +1,11 @@
+.header article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
 .header div {
   display: flex;
   flex-direction: row;
@@ -23,7 +31,7 @@
   padding: 10px;
   border: 1px solid #fff;
   border-radius: 10px;
-  width: aut5vw;
+  width: auto;
   box-sizing: border-box;
   margin: 20px;
 }
@@ -31,33 +39,121 @@
   max-width: 100px;
 }
 
+.main .description {
+  text-align: justify;
+}
+.main .description h2 {
+  letter-spacing: 2px;
+  margin: auto 0;
+  color: #000;
+}
 .main .description a {
-  color: #fff;
+  color: #13c003;
   text-decoration: underline;
 }
+.main .description span {
+  font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
+}
+.main .content section {
+  display: flex;
+  height: -moz-fit-content;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main .content section h3 {
+  margin: 0 auto;
+}
+.main .content section hr {
+  width: 90%;
+  border-color: rgba(10, 10, 10, 0.2470588235);
+}
+.main .content section .buy__container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  gap: 2%;
+}
+.main .content section .buy__container .products {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 1%;
+  background: linear-gradient(194deg, rgba(238, 234, 234, 0.61), rgba(0, 0, 0, 0.12));
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px auto;
+  padding: 5px;
+}
+.main .content section .buy__container .products p {
+  text-align: center;
+  margin: 0;
+}
+.main .content section .buy__container .products span {
+  font-weight: bold;
+}
+.main .content section .buy__container .products .product__parameter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+.main .content section .buy__container .products .logo__name {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.main .content section .buy__container .products .logo__name .logo {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #3700ff;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .content section .hidde {
+  display: none;
+}
+.main .content section .buy__header, .main .content section .hold__header, .main .content section .sell__header {
+  display: flex;
+  flex-direction: row;
+  gap: 1%;
+  font-size: 24px;
+  align-items: flex-end;
+}
 .main .content .buy {
-  grid-column: 1/2;
+  grid-row: 1/2;
   background-color: rgba(0, 255, 0, 0.3490196078);
-  height: 200px;
   border-radius: 10px;
   margin: 2%;
 }
 .main .content .hold {
-  grid-column: 2/3;
+  grid-row: 2/3;
   background-color: rgba(255, 255, 0, 0.6);
-  height: 200px;
   border-radius: 10px;
   margin: 2%;
 }
 .main .content .sell {
-  grid-column: 3;
+  grid-row: 3;
   background-color: rgba(255, 0, 0, 0.4392156863);
-  height: 200px;
   border-radius: 10px;
   margin: 2%;
 }
 
-* {
+.footer hr {
+  width: 90%;
+  border-color: rgba(10, 10, 10, 0.2470588235);
+}
+
+* h1, * h2, * h3 {
   font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
 }
 * p {
@@ -65,7 +161,7 @@
 }
 
 html {
-  background-color: #0b1b30;
+  background-color: #f7f7f7;
 }
 
 body {
@@ -73,14 +169,8 @@ body {
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
   background-color: #00e7ff;
   color: #fff;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .main {
@@ -89,6 +179,7 @@ body {
   grid-template-rows: auto 1fr;
   padding: 1% 5%;
   box-sizing: border-box;
+  color: #000;
 }
 .main .description {
   grid-column: 1/4;
@@ -96,10 +187,13 @@ body {
   width: 100%;
   height: -moz-fit-content;
   height: fit-content;
-  color: #fff;
 }
 .main .content {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.footer {
+  padding: 1%;
 }/*# sourceMappingURL=main.css.map */
