@@ -128,7 +128,7 @@ ethereum
 litecoin
 Chainlink
 Uniswap
-Solana
+
 
 
 //----------Usa este endopoint para adiquirir las imagenes de cada criptomoneda

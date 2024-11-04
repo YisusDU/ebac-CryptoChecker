@@ -119,6 +119,10 @@
   justify-content: center;
   align-items: center;
 }
+.main .content section .buy__container .products .logo__name .logo img {
+  width: 100%;
+  height: 100%;
+}
 .main .content section .hidde {
   display: none;
 }
