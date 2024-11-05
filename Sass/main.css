@@ -41,6 +41,11 @@
   width: auto;
   box-sizing: border-box;
   margin: 20px;
+  transition: all 0.25s;
+}
+.header i:active {
+  scale: 0.95;
+  transition: all 0.25s;
 }
 @media screen and (max-width: 560px) {
   .header i {
@@ -108,6 +113,11 @@
   justify-content: space-around;
   margin: 10px auto;
   padding: 5px;
+  transition: all 0.25s;
+}
+.main .content section .products__container .products:hover {
+  scale: 1.05;
+  transition: all 0.25s;
 }
 @media screen and (max-width: 630px) {
   .main .content section .products__container .products {
@@ -190,6 +200,9 @@
   align-items: center;
   z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
+.main .await #spinner p {
+  text-wrap: wrap;
+}
 .main .await .loader {
   border: 8px solid #f3f3f3; /* Color de fondo */
   border-top: 8px solid #3498db; /* Color del spinner */
@@ -263,6 +276,7 @@ body {
   color: #fff;
   width: 100%;
   padding: 1%;
+  min-width: 600px;
 }
 
 .main {
@@ -307,7 +321,6 @@ body {
 @media screen and (max-width: 502px) {
   .header {
     padding: 0;
-    min-width: 490px;
   }
   .main {
     padding: 1% 1%;

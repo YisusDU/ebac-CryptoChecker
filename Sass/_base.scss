@@ -16,7 +16,24 @@ $backGroundColorProducts: linear-gradient(194deg, rgba(238, 234, 234, 0.61), rgb
 }
 
 @mixin tinyPhones {
-    @media screen and (max-width: 520px){@content}
+    @media screen and (max-width: 520px){@content};
+}
+
+//Mixin de interactividad
+@media (hover:hover){
+    @mixin hover{
+        &:hover{
+            scale: 1.05;
+            transition: all 0.25s;
+        }
+    }
+    
+    @mixin active{
+        &:active{
+            scale: .95;
+            transition: all 0.25s;
+        }
+    }
 }
 
 

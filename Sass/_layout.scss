@@ -23,6 +23,7 @@ body {
     color: #fff;
     width: 100%; // Asegúrate de que el header ocupe el 100% del ancho
     padding: 1%; // Ajusta el padding si es necesario
+    min-width: 600px;
 }
 
 .main {
@@ -72,7 +73,7 @@ body {
 @media screen and (max-width: 502px) {
     .header {
         padding: 0; // Ajustar padding si es necesario
-        min-width: 490px;
+        
     }
 
     .main {

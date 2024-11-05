@@ -39,6 +39,8 @@
         width: auto;
         box-sizing: border-box;
         margin: 20px;
+        @include active;
+        transition: all 0.25s;
         @media screen and (max-width: 560px){
             scale: .8;
         }
@@ -106,6 +108,8 @@
                     justify-content: space-around;
                     margin: 10px auto;
                     padding: 5px;
+                    transition: all 0.25s;
+                    @include hover;
                     @media screen and (max-width: 630px){
                         overflow-x: auto;
                     }
@@ -191,6 +195,9 @@
             justify-content: center;
             align-items: center;
             z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+            p{
+                text-wrap: wrap;
+            }
         }
         
         .loader {
