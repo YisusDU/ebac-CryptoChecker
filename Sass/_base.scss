@@ -4,3 +4,19 @@ $backGroundHtmlLight:  #f7f7f7;
 $hrColor:  #0a0a0a3f;
 $backGroundColorProducts: linear-gradient(194deg, rgba(238, 234, 234, 0.61), rgb(0 0 0 / 12%));
 
+//Media querys con mixins
+@mixin cellphones{
+    //Se usa content para que todo lo que  se encuentre dentro del mixin sea aplicado
+    /*Para usar este mixi con media query, se copia:
+    @media screen and (max-width: 40rem){
+        Aqui va lo que queremos aplicar a la medida  de pantalla
+    }
+    */
+    @media screen and (max-width: 630px){@content};
+}
+
+@mixin tinyPhones {
+    @media screen and (max-width: 520px){@content}
+}
+
+

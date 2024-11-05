@@ -20,6 +20,10 @@
         width: 8%;
         min-width: 150px;
         min-height: 120px;
+        @media screen and (max-width: 560px){
+            min-width: 100px;
+            min-height: 80px;
+        }
     }
     h1{
         font-size: clamp(40px,  5vw, 50px);
@@ -35,6 +39,9 @@
         width: auto;
         box-sizing: border-box;
         margin: 20px;
+        @media screen and (max-width: 560px){
+            scale: .8;
+        }
         svg{
             max-width: 100px;;
         }
@@ -44,17 +51,24 @@
 .main{
     .description{
         text-align: justify;
+        width: 100%;
         h2{
             letter-spacing: 2px;
             margin: auto 0;
             color:#000;
+            width: 100%;
         }
         a{
             color: #13c003;
             text-decoration: underline;
+            width: 100%;
         }
         span{
             font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
+            width: 100%;
+        }
+        p{
+            width: 100%;
         }
     }
     
@@ -80,6 +94,7 @@
                 flex-direction: column;
                 width: 95%;
                 gap: 2%;
+                
                 .products{
                     display: flex;
                     flex-direction: row;
@@ -91,6 +106,9 @@
                     justify-content: space-around;
                     margin: 10px auto;
                     padding: 5px;
+                    @media screen and (max-width: 630px){
+                        overflow-x: auto;
+                    }
                     p{
                         text-align: center;
                         margin: 0;
@@ -160,12 +178,15 @@
     }
     .await{
         #spinner {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(139, 139, 139, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -194,4 +215,39 @@
         width: 90%;
         border-color: $hrColor;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+  .main{
+    .content{
+        section{
+            hr{
+                border-color: #fff;
+            }
+        }
+       .buy{
+        grid-row: 1/2;
+        background-color: transparent;
+        border: 5px solid #00ff0059;
+        border-radius: 10px;
+        margin: 2%;
+    }
+    .hold{
+        grid-row: 2/3;
+        background-color: transparent;
+        border: 5px solid #ffff0099;
+        border-radius: 10px;
+        margin: 2%;
+    }
+    .sell{
+        grid-row: 3;
+        background-color: transparent;
+        border: 5px solid #ff000070;
+        border-radius: 10px;
+        margin: 2%;
+    } 
+    }
+  }
+    
+  
 }

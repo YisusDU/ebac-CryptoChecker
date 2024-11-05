@@ -1,46 +1,110 @@
-*{
-    h1, h2, h3{
-        font-family: "Spicy Rice",Arial, Helvetica, sans-serif;
+* {
+    box-sizing: border-box; // Asegúrate de que todos los elementos usen border-box
+    h1, h2, h3 {
+        font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
     }
-    p{
+    p {
+        font-size: 1.2rem;
         font-family: Arial, Helvetica, sans-serif;
     }
 }
-html{
+
+html {
     background-color: $backGroundHtmlLight;
 }
-body{
+
+body {
     margin: 0;
+    overflow-x: hidden; // Evitar el desbordamiento horizontal
 }
 
-.header{
+.header {
     background-color: #00e7ff;
     color: #fff;
+    width: 100%; // Asegúrate de que el header ocupe el 100% del ancho
+    padding: 1%; // Ajusta el padding si es necesario
 }
 
-.main{
+.main {
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     padding: 1% 5%;
-    box-sizing: border-box;
-    color:#000;
-    .description{
-        grid-column: 1/4;
-        grid-row: 1;
-        width: 100%;
+    color: #000;
+
+    .description {
+        grid-column: 1 / -1; // Asegúrate de que ocupe toda la columna
         height: fit-content;
+        margin: 0 auto;
+        width: 90%; // Ajusta si es necesario
     }
-    .content{
+
+    .content {
         width: 100%;
         display: grid;
-        grid-template-rows: repeat(3,auto);
+        grid-template-rows: repeat(3, auto);
     }
-    .await{
+
+    .await {
         display: flex;
     }
 }
 
-.footer{
+.footer {
     padding: 1%;
+}
+
+@media screen and (max-width: 640px) {
+    .main {
+        padding: 1% 2%; // Ajustar el padding para pantallas pequeñas
+    }
+
+    .description {
+        width: 100%; // Asegurarse de que ocupe el 100% en pantallas pequeñas
+    }
+
+    .content {
+        grid-template-rows: repeat(2, auto); // Ajustar la cantidad de filas si es necesario
+    }
+}
+
+@media screen and (max-width: 502px) {
+    .header {
+        padding: 0; // Ajustar padding si es necesario
+        min-width: 490px;
+    }
+
+    .main {
+        padding: 1% 1%; // Ajustar el padding para pantallas más pequeñas
+    }
+}
+
+// Estilos para modo oscuro
+@media (prefers-color-scheme: dark) {
+    * {
+        h1, h2, h3 {
+            color: #ffffff !important; // Cambiar el color del texto a blanco
+        }
+        p,span {
+            color: #e0e0e0; // Color de texto más claro para el párrafo
+        }
+    }
+
+    html {
+        background-color: $backGroundHtmlDark; // Color de fondo oscuro
+    }
+
+    body {
+        color: #ffffff; // Color de texto general en el body
+    }
+
+    .header {
+        background-color: #005a8b; // Fondo más oscuro para el encabezado
+        color: #00e7ff; // Color del texto del encabezado
+    }
+
+    .footer {
+        color: #e0e0e0; // Color del texto del pie de página
+    }
 }

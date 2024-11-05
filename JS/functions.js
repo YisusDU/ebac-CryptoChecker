@@ -1,3 +1,4 @@
+
 const cryptoCard = (id, imgURL, crypto) => {
     // Contenedor de la moneda
     const card = document.createElement('div');

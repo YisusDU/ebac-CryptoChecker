@@ -22,6 +22,12 @@
   min-width: 150px;
   min-height: 120px;
 }
+@media screen and (max-width: 560px) {
+  .header img {
+    min-width: 100px;
+    min-height: 80px;
+  }
+}
 .header h1 {
   font-size: clamp(40px, 5vw, 50px);
   margin: 0;
@@ -36,24 +42,36 @@
   box-sizing: border-box;
   margin: 20px;
 }
+@media screen and (max-width: 560px) {
+  .header i {
+    scale: 0.8;
+  }
+}
 .header i svg {
   max-width: 100px;
 }
 
 .main .description {
   text-align: justify;
+  width: 100%;
 }
 .main .description h2 {
   letter-spacing: 2px;
   margin: auto 0;
   color: #000;
+  width: 100%;
 }
 .main .description a {
   color: #13c003;
   text-decoration: underline;
+  width: 100%;
 }
 .main .description span {
   font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
+  width: 100%;
+}
+.main .description p {
+  width: 100%;
 }
 .main .content section {
   display: flex;
@@ -90,6 +108,11 @@
   justify-content: space-around;
   margin: 10px auto;
   padding: 5px;
+}
+@media screen and (max-width: 630px) {
+  .main .content section .products__container .products {
+    overflow-x: auto;
+  }
 }
 .main .content section .products__container .products p {
   text-align: center;
@@ -153,12 +176,15 @@
   margin: 2%;
 }
 .main .await #spinner {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(139, 139, 139, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -186,10 +212,40 @@
   border-color: rgba(10, 10, 10, 0.2470588235);
 }
 
+@media (prefers-color-scheme: dark) {
+  .main .content section hr {
+    border-color: #fff;
+  }
+  .main .content .buy {
+    grid-row: 1/2;
+    background-color: transparent;
+    border: 5px solid rgba(0, 255, 0, 0.3490196078);
+    border-radius: 10px;
+    margin: 2%;
+  }
+  .main .content .hold {
+    grid-row: 2/3;
+    background-color: transparent;
+    border: 5px solid rgba(255, 255, 0, 0.6);
+    border-radius: 10px;
+    margin: 2%;
+  }
+  .main .content .sell {
+    grid-row: 3;
+    background-color: transparent;
+    border: 5px solid rgba(255, 0, 0, 0.4392156863);
+    border-radius: 10px;
+    margin: 2%;
+  }
+}
+* {
+  box-sizing: border-box;
+}
 * h1, * h2, * h3 {
   font-family: "Spicy Rice", Arial, Helvetica, sans-serif;
 }
 * p {
+  font-size: 1.2rem;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -199,27 +255,30 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .header {
   background-color: #00e7ff;
   color: #fff;
+  width: 100%;
+  padding: 1%;
 }
 
 .main {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   padding: 1% 5%;
-  box-sizing: border-box;
   color: #000;
 }
 .main .description {
-  grid-column: 1/4;
-  grid-row: 1;
-  width: 100%;
+  grid-column: 1/-1;
   height: -moz-fit-content;
   height: fit-content;
+  margin: 0 auto;
+  width: 90%;
 }
 .main .content {
   width: 100%;
@@ -232,4 +291,46 @@ body {
 
 .footer {
   padding: 1%;
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 1% 2%;
+  }
+  .description {
+    width: 100%;
+  }
+  .content {
+    grid-template-rows: repeat(2, auto);
+  }
+}
+@media screen and (max-width: 502px) {
+  .header {
+    padding: 0;
+    min-width: 490px;
+  }
+  .main {
+    padding: 1% 1%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  * h1, * h2, * h3 {
+    color: #ffffff !important;
+  }
+  * p, * span {
+    color: #e0e0e0;
+  }
+  html {
+    background-color: #0b1b30;
+  }
+  body {
+    color: #ffffff;
+  }
+  .header {
+    background-color: #005a8b;
+    color: #00e7ff;
+  }
+  .footer {
+    color: #e0e0e0;
+  }
 }/*# sourceMappingURL=main.css.map */
