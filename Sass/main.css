@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .header article {
   display: flex;
   flex-direction: row;
@@ -151,6 +152,34 @@
   border-radius: 10px;
   margin: 2%;
 }
+.main .await #spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+.main .await .loader {
+  border: 8px solid #f3f3f3; /* Color de fondo */
+  border-top: 8px solid #3498db; /* Color del spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .footer hr {
   width: 90%;
@@ -196,6 +225,9 @@ body {
   width: 100%;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
+}
+.main .await {
+  display: flex;
 }
 
 .footer {

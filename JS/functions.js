@@ -14,7 +14,7 @@ const cryptoCard = (id, img, crypto) => {
     img1.src = img.image.small; // Usar la img de la criptomoneda
 
     const name = document.createElement('span');
-    name.innerText = `${id.name} ${id.symbol.toUpperCase()}`; // Nombre y símbolo
+    name.innerText = `${id.name} ${id.symbol}`; // Nombre y símbolo
 
     icon.appendChild(img1)
     logo.appendChild(icon);
@@ -57,7 +57,7 @@ const cryptoCard = (id, img, crypto) => {
     change7daysValue.innerText =  `${crypto.market_data.price_change_percentage_7d}%`; // Cambio en 7 días
     
     change7daysContainer.appendChild(change7daysLabel);
-    change24hrsContainer.appendChild(change7daysValue);
+    change7daysContainer.appendChild(change7daysValue);
     card.appendChild(change7daysContainer);
 
     // Contenedor para el cambio en 14 días
@@ -116,7 +116,6 @@ const cryptoCard = (id, img, crypto) => {
 };
 
 // Ejemplo de uso:
-// Ejemplo de uso:
 const cryptosPopulars = {
     bitcoin: {
         "id": "bitcoin",
@@ -127,7 +126,10 @@ const cryptosPopulars = {
         "id": "ethereum",
         "symbol": "eth",
         "name": "Ethereum"
-    },
+    }
+};
+/*
+parte eliminada del objeto crytposPopular:
     litecoin: {
         "id": "litecoin",
         "symbol": "ltc",
@@ -143,14 +145,18 @@ const cryptosPopulars = {
         "symbol": "uni",
         "name": "Uniswap"
     }
-};
+*/
 
 //---------Vamos a crear la función asincrona que hace las peticiones a la API de CoinGecko
+
 // Función para crear un retraso en milisegundos
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Función asincrona para obtener datos de CoinGecko
 const getCoinGeckoData = async () => {
+    // Muestra el spinner
+    document.getElementById('spinner').style.display = 'flex';
+
     // Obtener la fecha actual
     const today = new Date();
     const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`; 
@@ -171,12 +177,11 @@ const getCoinGeckoData = async () => {
         };
 
         // Configuración para obtener los valores de la criptomoneda
-       
         const getValues = {
             method: 'GET',
-            url: 'https://api.coingecko.com/api/v3/coins/bitcoin',
+            url: `https://api.coingecko.com/api/v3/coins/${crypto.id}`,
             headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-HRpokdbgoPqyfytYatDB2f2f'}
-          };
+        };
 
         try {
             // Obtenemos el JSON con la imagen de la moneda
@@ -187,18 +192,27 @@ const getCoinGeckoData = async () => {
             const responseValue = await axios.request(getValues);
             console.log(`Valores de ${crypto.name}:`, responseValue.data);
 
-            // Espera 1 segundo antes de la siguiente solicitud para evitar el error 429
-            await delay(1000);
+            cryptoCard(crypto.id,responseImg.data, responseValue.data);
+            console.log(cryptoCard(crypto.id,responseImg.data, responseValue.data));
+
+
+            // Espera 15 segundos antes de la siguiente solicitud para evitar el error 429
+            await delay(15000);
         } catch (error) { 
             // Manejo de errores al obtener datos de la criptomoneda
             console.error(`Error al obtener datos de ${crypto.name}:`, error); 
             alert(`Algo salió mal al obtener datos de ${crypto.name}, intenta de nuevo`);
         }
     }
+
+    // Oculta el spinner después de que se han completado todas las solicitudes
+    document.getElementById('spinner').style.display = 'none';
 }
 
-// Llamamos a la función para obtener datos de todas las criptomonedas
-getCoinGeckoData();
+// Ejecutar la función cuando el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', getCoinGeckoData());
+
+
 
 
 
