@@ -1,4 +1,4 @@
-const cryptoCard = (id, img, crypto) => {
+const cryptoCard = (id, imgURL, crypto) => {
     // Contenedor de la moneda
     const card = document.createElement('div');
     card.classList.add('products');
@@ -11,10 +11,10 @@ const cryptoCard = (id, img, crypto) => {
     icon.id = 'coin__logo';
     icon.classList.add('logo');
     const img1 = document.createElement('img');
-    img1.src = img.image.small; // Usar la img de la criptomoneda
+    img1.src = imgURL; // Usar la img de la criptomoneda
 
     const name = document.createElement('span');
-    name.innerText = `${id.name} ${id.symbol}`; // Nombre y símbolo
+    name.innerText = `${id.name} ${id.symbol.toUpperCase()}`; // Nombre y símbolo
 
     icon.appendChild(img1)
     logo.appendChild(icon);
@@ -28,7 +28,7 @@ const cryptoCard = (id, img, crypto) => {
     priceLabel.innerText = 'Price';
     const priceValue = document.createElement('p');
     priceValue.id = 'current__price';
-    priceValue.innerText = crypto.market_data.current_price.mxn; // Precio actual
+    priceValue.innerText = `$${crypto.market_data.current_price.mxn.toLocaleString()} MXN`; // Precio actual en pesos Mexicanos
 
     priceContainer.appendChild(priceLabel);
     priceContainer.appendChild(priceValue);
@@ -41,7 +41,7 @@ const cryptoCard = (id, img, crypto) => {
     change24hrsLabel.innerText = '24hrs';
     const change24hrsValue = document.createElement('p');
     change24hrsValue.id = '24hrs';
-    change24hrsValue.innerText = `${crypto.market_data.price_change_percentage_24h}%`; // Cambio en 24 horas
+    change24hrsValue.innerText = `${crypto.market_data.price_change_percentage_24h.toFixed(2)}%`; // Cambio en 24 horas
 
     change24hrsContainer.appendChild(change24hrsLabel);
     change24hrsContainer.appendChild(change24hrsValue);
@@ -54,7 +54,7 @@ const cryptoCard = (id, img, crypto) => {
     change7daysLabel.innerText = '7d';
     const change7daysValue = document.createElement('p');
     change7daysValue.id = '7d';
-    change7daysValue.innerText =  `${crypto.market_data.price_change_percentage_7d}%`; // Cambio en 7 días
+    change7daysValue.innerText =  `${crypto.market_data.price_change_percentage_7d.toFixed(2)}%`; // Cambio en 7 días
     
     change7daysContainer.appendChild(change7daysLabel);
     change7daysContainer.appendChild(change7daysValue);
@@ -67,7 +67,7 @@ const cryptoCard = (id, img, crypto) => {
     change14daysLabel.innerText = '14d';
     const change14daysValue = document.createElement('p');
     change14daysValue.id = '14d';
-    change14daysValue.innerText = `${crypto.market_data.price_change_percentage_14d}%`; // Cambio en 14 días
+    change14daysValue.innerText = `${crypto.market_data.price_change_percentage_14d.toFixed(2)}%`; // Cambio en 14 días
 
     change14daysContainer.appendChild(change14daysLabel);
     change14daysContainer.appendChild(change14daysValue);
@@ -80,7 +80,7 @@ const cryptoCard = (id, img, crypto) => {
     change30daysLabel.innerText = '30d';
     const change30daysValue = document.createElement('p');
     change30daysValue.id = '30d';
-    change30daysValue.innerText = `${crypto.market_data.price_change_percentage_30d}%`; // Cambio en 30 días
+    change30daysValue.innerText = `${crypto.market_data.price_change_percentage_30d.toFixed(2)}%`; // Cambio en 30 días
 
     change30daysContainer.appendChild(change30daysLabel);
     change30daysContainer.appendChild(change30daysValue);
@@ -93,7 +93,7 @@ const cryptoCard = (id, img, crypto) => {
     change60daysLabel.innerText = '60d';
     const change60daysValue = document.createElement('p');
     change60daysValue.id = '60d';
-    change60daysValue.innerText = `${crypto.market_data.price_change_percentage_60d}%`; // Cambio en 60 días
+    change60daysValue.innerText = `${crypto.market_data.price_change_percentage_60d.toFixed(2)}%`; // Cambio en 60 días
 
     change60daysContainer.appendChild(change60daysLabel);
     change60daysContainer.appendChild(change60daysValue);
@@ -106,7 +106,7 @@ const cryptoCard = (id, img, crypto) => {
     change200daysLabel.innerText = '200d';
     const change200daysValue = document.createElement('p');
     change200daysValue.id = '200d';
-    change200daysValue.innerText = `${crypto.market_data.price_change_percentage_200d}%`; // Cambio en 200 días
+    change200daysValue.innerText = `${crypto.market_data.price_change_percentage_200d.toFixed(2)}%`; // Cambio en 200 días
 
     change200daysContainer.appendChild(change200daysLabel);
     change200daysContainer.appendChild(change200daysValue);
@@ -126,10 +126,32 @@ const cryptosPopulars = {
         "id": "ethereum",
         "symbol": "eth",
         "name": "Ethereum"
+    },
+    litecoin: {
+        "id": "litecoin",
+        "symbol": "ltc",
+        "name": "Litecoin"
+    },
+    chainlink: {
+        "id": "chainlink",
+        "symbol": "link",
+        "name": "Chainlink"
+    },
+    uniswap: {
+        "id": "uniswap",
+        "symbol": "uni",
+        "name": "Uniswap"
     }
+   
 };
 /*
 parte eliminada del objeto crytposPopular:
+    ,
+    ethereum: {
+        "id": "ethereum",
+        "symbol": "eth",
+        "name": "Ethereum"
+    },
     litecoin: {
         "id": "litecoin",
         "symbol": "ltc",
@@ -186,18 +208,43 @@ const getCoinGeckoData = async () => {
         try {
             // Obtenemos el JSON con la imagen de la moneda
             const responseImg = await axios.request(getIMG);
-            console.log(`Imagen de ${crypto.name}:`, responseImg.data); 
+            const imgURL = responseImg.data;
+            console.log(`Imagen de ${crypto.name}:`,imgURL.image.small); 
 
             // Obtenemos el JSON con los valores de la moneda
             const responseValue = await axios.request(getValues);
             console.log(`Valores de ${crypto.name}:`, responseValue.data);
 
-            cryptoCard(crypto.id,responseImg.data, responseValue.data);
-            console.log(cryptoCard(crypto.id,responseImg.data, responseValue.data));
+            //Creamos la tarjeta con los  datos obtenidos
+            const productCard = cryptoCard(crypto, imgURL.image.small, responseValue.data);
+            console.log(cryptoCard(crypto, imgURL.image.small, responseValue.data));
+
+            //Seleccionamos el contenedor de comprar
+            const  buyContainer = document.querySelector("#buy__container");
+
+            //Seleccionamos el contenedor de mantener
+            const  holdContainer = document.querySelector("#hold__container");
+
+            //Seleccionamos el  contenedor de vender
+            const  sellContainer = document.querySelector("#sell__container");
+
+            //Creamos la función que  se encarga de agregar la tarjeta a la sección correspondiente
+
+            //Añadimos la ruta que vamos a validar
+            const plusLess = responseValue.data.market_data.price_change_percentage_7d;
+            if(plusLess > 7){
+                sellContainer.appendChild(productCard)
+            } else if(plusLess < -7){
+                buyContainer.appendChild(productCard)
+            } else {
+                holdContainer.appendChild(productCard)
+            }
+
+            
 
 
             // Espera 15 segundos antes de la siguiente solicitud para evitar el error 429
-            await delay(15000);
+            await delay(35000);
         } catch (error) { 
             // Manejo de errores al obtener datos de la criptomoneda
             console.error(`Error al obtener datos de ${crypto.name}:`, error); 
