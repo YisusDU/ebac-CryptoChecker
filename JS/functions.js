@@ -1,4 +1,4 @@
-
+//---------Vamos a crear la función que crea las tarjetas de las criptomonedas
 const cryptoCard = (id, imgURL, crypto) => {
     // Contenedor de la moneda
     const card = document.createElement('div');
@@ -7,7 +7,7 @@ const cryptoCard = (id, imgURL, crypto) => {
     // Contenedor del logo y nombre
     const logo = document.createElement('div');
     logo.classList.add('product__parameter', 'logo__name');
-    
+
     const icon = document.createElement('i');
     icon.id = 'coin__logo';
     icon.classList.add('logo');
@@ -55,8 +55,8 @@ const cryptoCard = (id, imgURL, crypto) => {
     change7daysLabel.innerText = '7d';
     const change7daysValue = document.createElement('p');
     change7daysValue.id = '7d';
-    change7daysValue.innerText =  `${crypto.market_data.price_change_percentage_7d.toFixed(2)}%`; // Cambio en 7 días
-    
+    change7daysValue.innerText = `${crypto.market_data.price_change_percentage_7d.toFixed(2)}%`; // Cambio en 7 días
+
     change7daysContainer.appendChild(change7daysLabel);
     change7daysContainer.appendChild(change7daysValue);
     card.appendChild(change7daysContainer);
@@ -112,7 +112,7 @@ const cryptoCard = (id, imgURL, crypto) => {
     change200daysContainer.appendChild(change200daysLabel);
     change200daysContainer.appendChild(change200daysValue);
     card.appendChild(change200daysContainer);
-    
+
     return card;
 };
 
@@ -143,32 +143,8 @@ const cryptosPopulars = {
         "symbol": "uni",
         "name": "Uniswap"
     }
-   
+
 };
-/*
-parte eliminada del objeto crytposPopular:
-    ,
-    ethereum: {
-        "id": "ethereum",
-        "symbol": "eth",
-        "name": "Ethereum"
-    },
-    litecoin: {
-        "id": "litecoin",
-        "symbol": "ltc",
-        "name": "Litecoin"
-    },
-    chainlink: {
-        "id": "chainlink",
-        "symbol": "link",
-        "name": "Chainlink"
-    },
-    uniswap: {
-        "id": "uniswap",
-        "symbol": "uni",
-        "name": "Uniswap"
-    }
-*/
 
 //---------Vamos a crear la función asincrona que hace las peticiones a la API de CoinGecko
 
@@ -182,86 +158,68 @@ const getCoinGeckoData = async () => {
 
     // Obtener la fecha actual
     const today = new Date();
-    const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`; 
+    const formattedDate = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
 
-    // Iterar sobre cada criptomoneda en cryptosPopulars
-    for (const key in cryptosPopulars) {
-        const crypto = cryptosPopulars[key];
 
-        // Configuración para obtener la imagen de la criptomoneda
-        const getIMG = {
+    // Configuración para obtener la imagen y el valor de la criptomoneda
+    const createRequests = (cryptoId) => ({
+        imageRequest: {
             method: 'GET',
-            url: `https://api.coingecko.com/api/v3/coins/${crypto.id}/history`,
-            params: {
-                date: formattedDate,
-                localization: 'false'
-            },
+            url: `https://api.coingecko.com/api/v3/coins/${cryptoId}/history`,
+            params: { date: formattedDate, localization: 'false' },
             headers: { accept: 'application/json' }
-        };
-
-        // Configuración para obtener los valores de la criptomoneda
-        const getValues = {
+        },
+        valueRequest: {
             method: 'GET',
-            url: `https://api.coingecko.com/api/v3/coins/${crypto.id}`,
-            headers: {accept: 'application/json', 'x-cg-demo-api-key': 'CG-HRpokdbgoPqyfytYatDB2f2f'}
-        };
-
-        try {
-            // Obtenemos el JSON con la imagen de la moneda
-            const responseImg = await axios.request(getIMG);
-            const imgURL = responseImg.data;
-            console.log(`Imagen de ${crypto.name}:`,imgURL.image.small); 
-
-            // Obtenemos el JSON con los valores de la moneda
-            const responseValue = await axios.request(getValues);
-            console.log(`Valores de ${crypto.name}:`, responseValue.data);
-
-            //Creamos la tarjeta con los  datos obtenidos
-            const productCard = cryptoCard(crypto, imgURL.image.small, responseValue.data);
-            console.log(cryptoCard(crypto, imgURL.image.small, responseValue.data));
-
-            //Seleccionamos el contenedor de comprar
-            const  buyContainer = document.querySelector("#buy__container");
-
-            //Seleccionamos el contenedor de mantener
-            const  holdContainer = document.querySelector("#hold__container");
-
-            //Seleccionamos el  contenedor de vender
-            const  sellContainer = document.querySelector("#sell__container");
-
-            //Creamos la función que  se encarga de agregar la tarjeta a la sección correspondiente
-
-            //Añadimos la ruta que vamos a validar
-            const plusLess = responseValue.data.market_data.price_change_percentage_7d;
-            if(plusLess > 7){
-                sellContainer.appendChild(productCard)
-            } else if(plusLess < -7){
-                buyContainer.appendChild(productCard)
-            } else {
-                holdContainer.appendChild(productCard)
+            url: `https://api.coingecko.com/api/v3/coins/${cryptoId}`,
+            headers: {
+                accept: 'application/json',
+                'x-cg-demo-api-key': 'CG-HRpokdbgoPqyfytYatDB2f2f'
             }
-
-            
-
-
-            // Espera 15 segundos antes de la siguiente solicitud para evitar el error 429
-            await delay(35000);
-        } catch (error) { 
-            // Manejo de errores al obtener datos de la criptomoneda
-            console.error(`Error al obtener datos de ${crypto.name}:`, error); 
-            alert(`Algo salió mal al obtener datos de ${crypto.name}, intenta de nuevo`);
         }
-    }
+    });
 
-    // Oculta el spinner después de que se han completado todas las solicitudes
-    document.getElementById('spinner').style.display = 'none';
-}
+    try {
+        // Crear array de promesas para todas las criptomonedas
+        const cryptoPromises = Object.values(cryptosPopulars).map(async (crypto) => {
+            const requests = createRequests(crypto.id);
+
+            // Hacer las dos peticiones en paralelo para cada cripto
+            const [imgResponse, valueResponse] = await Promise.all([
+                axios.request(requests.imageRequest),
+                axios.request(requests.valueRequest)
+            ]);
+
+            return {
+                crypto,
+                imgURL: imgResponse.data.image.small,
+                valueData: valueResponse.data
+            };
+        });
+        // Ejecutar todas las promesas en paralelo
+        const results = await Promise.all(cryptoPromises);
+
+        // Procesar los resultados y actualizar el DOM
+        results.forEach(({ crypto, imgURL, valueData }) => {
+            const productCard = cryptoCard(crypto, imgURL, valueData);
+            const plusLess = valueData.market_data.price_change_percentage_7d;
+
+            if (plusLess > 7) {
+                document.querySelector("#sell__container").appendChild(productCard);
+            } else if (plusLess < -7) {
+                document.querySelector("#buy__container").appendChild(productCard);
+            } else {
+                document.querySelector("#hold__container").appendChild(productCard);
+            }
+        });
+
+    } catch (error) {
+        console.error('Error al obtener datos:', error);
+        alert('Algo salió mal al obtener los datos, intenta de nuevo');
+    } finally {
+        document.getElementById('spinner').style.display = 'none';
+    }
+};
 
 // Ejecutar la función cuando el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', getCoinGeckoData());
-
-
-
-
-
-
+document.addEventListener('DOMContentLoaded', () => getCoinGeckoData());
